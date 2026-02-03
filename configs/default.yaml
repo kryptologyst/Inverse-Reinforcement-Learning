@@ -1,0 +1,47 @@
+# Default configuration for Maximum Entropy IRL
+
+# Environment settings
+env:
+  name: "CartPole-v1"
+  max_steps: 500
+  seed: 42
+
+# Data collection
+data:
+  num_expert_trajectories: 50
+  num_policy_trajectories: 50
+  expert_type: "heuristic"  # random, optimal, heuristic
+
+# Model architecture
+model:
+  hidden_size: 64
+  num_layers: 2
+  dropout: 0.1
+
+# Training parameters
+training:
+  learning_rate: 0.001
+  num_iterations: 1000
+  batch_size: 32
+  regularization_weight: 0.01
+  entropy_weight: 1.0
+  gradient_clip_norm: 1.0
+
+# Evaluation
+evaluation:
+  eval_frequency: 100
+  num_eval_episodes: 10
+  num_test_episodes: 50
+
+# Logging and output
+output:
+  log_dir: "logs"
+  model_dir: "models"
+  plot_dir: "plots"
+  save_frequency: 100
+
+# Device settings
+device:
+  use_cuda: true
+  use_mps: true  # Apple Silicon
+  fallback_to_cpu: true
